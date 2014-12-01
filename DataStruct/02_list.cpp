@@ -123,14 +123,19 @@ public:
             p = p->next;
         }
     }
-    void sorted(int reverse=0) {
-        Node* p = head;
+    void sort(int reverse=0) {        //突然发现，没有头节点，不使用C++
+        Node*& pn = head;           //里面的引用还是比较难实现的啊
         Node* tmp = NULL;
-        if(p->next != NULL) {
-            while(p->next) {
-                if(p->data > p->next-data) {
-                    tmp
+        if(pn->next != NULL) {
+            while(pn->next != NULL) {
+                cout << "aa" << endl;
+                Node* p = pn;
+                if(pn->data > pn->next->data) {
+                    tmp = pn;
+                    pn = pn->next;
+                    pn->next = tmp;
                 }
+                p = p->next;
             }
         }
     }
@@ -154,6 +159,8 @@ int main() {
     l.set(l.find(5), 15);
     l.travel();
     l.reverse();
+    l.travel();
+    l.sort();
     l.travel();
     cout << "第一个元素是:" << l.front() << "\t最后一个是:" << l.end() << "\t大小是:" << l.size() << endl;
     sizeof(l); //? =4/8其实就是一个地址
