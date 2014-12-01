@@ -123,6 +123,17 @@ public:
             p = p->next;
         }
     }
+    void sorted(int reverse=0) {
+        Node* p = head;
+        Node* tmp = NULL;
+        if(p->next != NULL) {
+            while(p->next) {
+                if(p->data > p->next-data) {
+                    tmp
+                }
+            }
+        }
+    }
 };
 
 int main() {
