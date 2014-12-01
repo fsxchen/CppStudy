@@ -114,7 +114,15 @@ public:
         }
         return p->data;
     }
-
+    void reverse() {
+        Node *p = this->head;
+        head = NULL;
+        while(p != NULL) {
+            // cout << p->data << "\t...";
+            push_front(p->data);
+            p = p->next;
+        }
+    }
 };
 
 int main() {
@@ -134,7 +142,9 @@ int main() {
     l.set(l.size()-1, 500);
     l.set(l.find(5), 15);
     l.travel();
-    cout << l.front() << "\t" << l.end() << '\t' << l.size() << endl;
+    l.reverse();
+    l.travel();
+    cout << "第一个元素是:" << l.front() << "\t最后一个是:" << l.end() << "\t大小是:" << l.size() << endl;
     sizeof(l); //? =4/8其实就是一个地址
     return 0;
 }
