@@ -124,19 +124,19 @@ public:
         }
     }
     void sort(int reverse=0) {        //突然发现，没有头节点，不使用C++
-        Node*& pn = head;           //里面的引用还是比较难实现的啊
-        Node* tmp = NULL;
-        if(pn->next != NULL) {
-            while(pn->next != NULL) {
-                cout << "aa" << endl;
-                Node* p = pn;
-                if(pn->data > pn->next->data) {
-                    tmp = pn;
-                    pn = pn->next;
-                    pn->next = tmp;
+        Node* p = head;           //里面的引用还是比较难实现的啊
+        T tmp;
+        while(p != NULL) {          //这里采用的是冒泡法排序
+            Node* q = p->next;      //这里交换的数据，不是指针
+            while(q != NULL) {
+                if(p->data > q->data) {
+                    tmp = p->data;
+                    p->data = q->data;
+                    q->data = tmp;
                 }
-                p = p->next;
+                q = q->next;
             }
+            p = p->next;
         }
     }
 };
@@ -161,6 +161,7 @@ int main() {
     l.reverse();
     l.travel();
     l.sort();
+    cout << "the sorted list is: " << endl ;
     l.travel();
     cout << "第一个元素是:" << l.front() << "\t最后一个是:" << l.end() << "\t大小是:" << l.size() << endl;
     sizeof(l); //? =4/8其实就是一个地址
