@@ -105,7 +105,7 @@ public:
         getptr(pos)->data = d;
     }
     bool empty() const {return head==NULL;}
-    T front() {if(empty()) throw "空"; return head->data;}
+    const T& front() {if(empty()) throw "空"; return head->data;}
     T end()const {
         if(empty()) throw "空";
         Node *p = head;

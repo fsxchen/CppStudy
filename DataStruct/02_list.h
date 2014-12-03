@@ -21,11 +21,11 @@ public:
     ~List();
     void erase(int pos);
     void remove(const T& d);
-    int find(const T& d) const;
+    T find(const T& d) const;
     void set(int pos, const T& d);
     bool empty() const;
-    T front();
-    T end()const;
+    const T& front()const;
+    const T& end()const;
     void reverse();
     void sort(int reverse=0);
 };

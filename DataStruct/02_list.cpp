@@ -4,8 +4,6 @@ typedef int T;
 
 using namespace std;
 
-
-
 int List::size() const {
     return len;
 }
@@ -96,8 +94,8 @@ void List::set(int pos, const T& d) {
     getptr(pos)->data = d;
 }
 bool List::empty() const {return head==NULL;}
-T List::front() {if(empty()) throw "空"; return head->data;}
-T List::end()const {
+const T& List::front() const {if(empty()) throw "空"; return head->data;}
+const T& List::end()const {
     if(empty()) throw "空";
     Node *p = head;
     while(p->next != NULL){
