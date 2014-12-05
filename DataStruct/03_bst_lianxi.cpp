@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 typedef char T;
 
@@ -23,6 +24,7 @@ public:
     void insert(const T& d) {insert(rp, new Node(d)); ++n;}
     tree& find(const T& d) {return find(rp, d);}
     void travel() const {travel(rp); cout << endl;}
+    void printTree() const {printTree(rp, 0, '*'); }
     bool empty() const{return rp==NULL;}
     //如何删除节点
     bool remove(const T& d){
@@ -75,6 +77,12 @@ public:
         int rh = high(t->R);
         return 1 + max(lh, rh);
     }
+    void printTree(tree t, int space, char sign) const {
+        if(t == NULL) return;
+        printTree(t->R, space+3, '/');
+        cout << setw(space+1) << sign << t->data << endl;
+        printTree(t->L, space+3, '\\');
+    }
 };
 
 
@@ -89,6 +97,6 @@ int main() {
     b.printTree();
     // b.travel();
     while(!b.empty()) b.remove(b.root());
-    // cout << "size is " << b.size() << endl;
-    return 0;
-}
+        // cout << "size is " << b.size() << endl;
+        return 0;
+    }
