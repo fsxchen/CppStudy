@@ -3,18 +3,6 @@
 using namespace std;
 
 template <typename T>
-class Fact<T> {
-public:
-    enum {val=Fact<n-1>::val* n};
-};
-
-template <int n>
-class Fact<0> {
-public:
-    enum {val=1};
-};
-
-template <typename T>
 class Type{
 public:
     static string name() {return typeid(T).name();}
@@ -48,6 +36,16 @@ class Type<T*> {
 public:
     static string name() {return Type<T>::name()+ " pointer";}
 };
+
+template <typename T>
+string type(T t) {
+    return Type<T>::name();
+}
 int main() {
+    cout << type(123) << endl;
+    cout << type(45.6) << endl;
+    int a = 10; char b ='d';
+    cout<< type(a/1.0) << endl;
+    cout << type(a < b) << endl;
     return 0;
 }
