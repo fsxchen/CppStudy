@@ -3,9 +3,9 @@
 //输出指定区间的数据，包含头，不包含尾
 #include <iostream>
 template <typename T>
-void print(T b, T e) {
+void print(T b, T e, char c=' ') {
     while(b!= e)
-        cout << *b++ << ' ';
+        cout << *b++ << c;
     cout << endl;
 }
 #endif
