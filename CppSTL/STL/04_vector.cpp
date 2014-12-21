@@ -24,6 +24,8 @@ int main() {
         vv.push_back(i + 0.1);
         cout << vv.size() << '/' << vv.capacity() << endl;
     }
+    vd[3] = 123.45;
+    vv.at(5) = 67.8;
     for(int i = 0; i <= vd.size(); i++) {       //这个越界，但是不会抛出异常
         cout << vd[i] << ' ';
     }
