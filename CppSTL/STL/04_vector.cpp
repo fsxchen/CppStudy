@@ -40,12 +40,23 @@ int main() {
         cout << "类型：" << typeid(e).name() << endl;
     }
     int m = 3, n = 5;
+    void print(const vector< vector <int> >& v);
+
     vector< vector<int> > vvi(m, vector<int>(n));       //使用vector构造了一个二维数组
-    vector< vector<> > > ivv;
-    vvi.resize(m + 3);
-    vvi.[1].assign(9, 1);
-    vvi.[5].assign(4, 5);
+    vector< vector<int> > ivv;
     print(vvi);
+    vvi.resize(m + 3);
+    vvi[1].assign(9, 1);
+    vvi[5].assign(4, 5);
+    print(vvi);
+}
+void print(const vector< vector <int> >& v){
+    for(int i = 0; i < v.size(); i ++) {
+        for(int j = 0; j < v[i].size(); j ++) {
+            cout << v[i][j] << ' ';
+        }
+        cout << endl;
+    }
 }
 
 template <typename T>
