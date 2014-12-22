@@ -39,6 +39,13 @@ int main() {
         cout << "异常：" << e.what() << endl;
         cout << "类型：" << typeid(e).name() << endl;
     }
+    int m = 3, n = 5;
+    vector< vector<int> > vvi(m, vector<int>(n));       //使用vector构造了一个二维数组
+    vector< vector<> > > ivv;
+    vvi.resize(m + 3);
+    vvi.[1].assign(9, 1);
+    vvi.[5].assign(4, 5);
+    print(vvi);
 }
 
 template <typename T>
