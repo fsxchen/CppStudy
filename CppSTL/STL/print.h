@@ -8,4 +8,9 @@ void print(T b, T e, char c=' ') {
         cout << *b++ << c;
     cout << endl;
 }
+
+template <typename K, typename V>
+ostream& operator<<(ostream& o, const pair<K, V> p) {
+    return o << p.first << ':' << p.second;
+}
 #endif
