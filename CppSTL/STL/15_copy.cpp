@@ -28,7 +28,7 @@ int main() {
     deque<int> v;
     co(a,a+5,back_inserter(v));
     print(v.begin(), v.end());
-    co(a,a+5,front_inserter(v));
+    co(a,a+5,front_inserter(v));        //插入器
     print(v.begin(), v.end());
     v.clear();
     remove_copy_if(a,a+5,back_inserter(v),func);
