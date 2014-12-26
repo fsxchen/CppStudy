@@ -3,6 +3,7 @@ using namespace std;
 #include <vector>
 #include "print.h"
 #include <algorithm>
+#include <deque>
 
 template <typename Iter, typename Pos>
 void co(Iter ib, Iter ie, Pos p) {
@@ -22,6 +23,15 @@ int main() {
     print(b, b + 8);                //2 3 6 8 9 0 0 0
     //co(b, b+5, b+3);              //+2 3 6 2 3 6 2 3
     copy_backward(b, b+5, b+8);     //倒着复制
-    print(b, b + 8);
-
+    print(b,b+8);
+    bool func(int);
+    deque<int> v;
+    co(a,a+5,back_inserter(v));
+    print(v.begin(), v.end());
+    co(a,a+5,front_inserter(v));
+    print(v.begin(), v.end());
+    v.clear();
+    remove_copy_if(a,a+5,back_inserter(v),func);
+    print(v.begin(), v.end());
 }
+bool func(int n){return n&1;}
