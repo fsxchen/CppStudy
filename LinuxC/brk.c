@@ -24,14 +24,24 @@ main() {
     // printf("%p\n", p4);
     // printf("%p\n", p5);
 
-    int *p1=sbrk(4);
-    int *p2=sbrk(200);
-    int *p3=sbrk(4);
-    *(p1+1023)=8888;
-    // *(p1+1024) = 9999;   段错误，因为访问到了下一页
-    printf("%p\n", p1);
-    printf("%p\n", p2);
-    printf("%p\n", p3);
-    printf("%d\n", getpid());
+    // int *p1=sbrk(4);
+    // int *p2=sbrk(200);
+    // int *p3=sbrk(-4);
+    // int *p4=sbrk(-4);
+    // int *p5=sbrk(-4);
+    // *(p1+1023)=8888;
+    // // *(p1+1024) = 9999;   段错误，因为访问到了下一页
+    // printf("%p\n", p1);
+    // printf("%p\n", p2);
+    // printf("%p\n", p3);
+    // printf("%p\n", p4);
+    // printf("%p\n", p5);
+    // printf("%d\n", getpid());
+    int *p=sbrk(0);
+    brk(p+1);       //绝对移动
+    *p=999;
+    brk(p);
+    *p=888;         //段错误，因为已经释放了
+
     while(1);
 }
