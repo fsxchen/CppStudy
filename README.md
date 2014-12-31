@@ -15,6 +15,13 @@
 3.二叉树
 
 ###五、模板、STL
+
 1、类模板
 
 2、函数模板
+
+###五、Linux C高级编程
+
+1、内存管理，new、malloc、brk、sbrk、mmap、unmmap
+
+2、静态库、动态库
