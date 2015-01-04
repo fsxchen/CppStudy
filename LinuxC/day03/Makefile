@@ -1,3 +1,5 @@
+fd:
+	gcc fd.c -omain
 env:env.c
 	gcc env.c -o main
 
