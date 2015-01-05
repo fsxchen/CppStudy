@@ -1,3 +1,7 @@
+cur_out:
+	gcc cur_out.c -omain -lcurses
+cur_init:cur_init.c
+	gcc cur_init.c -omain -lcurses
 map_write:map_write.c
 	gcc map_write.c -omain
 fstat:fstat.c
