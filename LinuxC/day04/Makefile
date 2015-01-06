@@ -1,3 +1,9 @@
+getch:getch.c
+	gcc getch.c -omain -lcurses
+demo3:
+	gcc demo3.c -omain -lcurses
+demo2:
+	gcc demo2.c -omain -lcurses
 cur_out:
 	gcc cur_out.c -omain -lcurses
 cur_init:cur_init.c
