@@ -1,3 +1,11 @@
+derwin:derwin.c
+	gcc derwin.c -omain -lcurses
+demo5:demo5.c
+	gcc demo5.c -omain -lcurses
+getstr:getstr.c
+	gcc getstr.c -omain -lcurses
+demo4:demo4.c
+	gcc demo4.c -omain -lcurses
 getch:getch.c
 	gcc getch.c -omain -lcurses
 demo3:
