@@ -1,4 +1,3 @@
-total 16
--rwxrwxr-x 1 hqth hqth 8590 Jan  7 17:08 a.out
+HelloWorldrwxrwxr-x 1 hqth hqth 8590 Jan  7 17:08 a.out
 -rw-rw-r-- 1 hqth hqth  307 Jan  7 17:08 euser.c
 -rw-rw---- 1 hqth hqth    0 Jan  7 17:11 test.txt
