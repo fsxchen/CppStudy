@@ -4,6 +4,6 @@
 int main() {
 
     printf("%d\n", getpid());
-    sleep(10);
+    sleep(5);
     return 10;
 }
