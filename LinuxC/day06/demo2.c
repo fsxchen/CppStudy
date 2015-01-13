@@ -35,7 +35,7 @@ main() {
         signal(SIGUSR1, handle);
         while(1) {
             if(isstop == 1) {
-                pause();
+                pause();        //pause会被信号终端停止
             }
             num = 0;
             for(i = 0; i < 7; i++) {
@@ -46,6 +46,7 @@ main() {
             wrefresh(w);
             usleep(10000);
         }
+        endwin();
     } else {        //child
         int ch;
         while(1) {
@@ -54,8 +55,9 @@ main() {
                 kill(getppid(), SIGUSR1);
             }
         }
+        endwin();
     }
 
 
-    endwin();
+
 }

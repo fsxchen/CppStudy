@@ -7,7 +7,8 @@ void handle(int s) {
     printf("我是信号发生！\n");
 }
 main() {
-    signal(SIGINT, handle);
+    // signal(SIGINT, handle);
+    signal(35, handle);
     while(1) {
         printf("进程在执行:%d\n", getpid());
         sleep(1);
