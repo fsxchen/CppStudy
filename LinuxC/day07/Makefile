@@ -1,3 +1,9 @@
+fifo:
+	gcc fifoA.c -oA
+	gcc fifoB.c -oB
+proc:
+	gcc procA.c -o procA
+	gcc procB.c -o procB
 sigaction:
 	gcc sigaction.c -omain
 
