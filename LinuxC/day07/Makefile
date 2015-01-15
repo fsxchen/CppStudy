@@ -1,9 +1,11 @@
-fifo:
-	gcc fifoA.c -oA
-	gcc fifoB.c -oB
-proc:
-	gcc procA.c -o procA
-	gcc procB.c -o procB
+demo3:
+	gcc demo3.c -omain
+demo2:
+	gcc demo2.c -omain
+pipedemo:
+	gcc pipe.c -omain
+sigqueue:
+	gcc sigqueue.c -omain2
 sigaction:
 	gcc sigaction.c -omain
 

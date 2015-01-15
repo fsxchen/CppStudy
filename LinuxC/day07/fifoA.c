@@ -22,6 +22,7 @@ main() {
     mkfifo("my.pipe", 0666);
     //打开管道
     fd = open("my.pipe", O_RDWR);
+    shutdown(fd, SHUT_RD);  //关掉读的权限
     //每隔1秒写数据
     while(1) {
         sleep(1);

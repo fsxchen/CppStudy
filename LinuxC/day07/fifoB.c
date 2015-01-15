@@ -19,10 +19,10 @@ main() {
 
     //打开管道
     fd = open("my.pipe", O_RDWR);
+    shutdown(fd, SHUT_WR);  //关掉写的权限
     //每隔1秒写数据
     while(1) {
         read(fd, &i, 4);
         printf("%d\n", i);
     }
-
 }
