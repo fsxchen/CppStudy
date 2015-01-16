@@ -18,4 +18,5 @@ main() {
     //3.访问共享内存
     //4.卸载共享内存shmdt
     //5.删除共享内存shctl
+    shmctl(shmid, IPC_RMID, 0);
 }
