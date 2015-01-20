@@ -3,20 +3,22 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <linux/un.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
 
 main() {
     int fd;
     int r;
     char buf[200];
     //1.建立一个socket
-    fd = socket(AF_UNIX, SOCK_DGRAM, 0);    //AF_UNIX, AF_INET   SOCK_STREAM, SOCK_DGRAM
+    fd = socket(AF_INET, SOCK_DGRAM, 0);    //AF_UNIX, AF_INET   SOCK_STREAM, SOCK_DGRAM
     if(fd == -1) printf("socket err:%m\n"), exit(-1);
     printf("socket成功！\n");
     //2.构建本地文件地址
-    struct sockaddr_un addr= {0};
-    addr.sun_family = AF_UNIX;
-    memcpy(addr.sun_path, "my.sock", strlen("my.sock"));
+    struct sockaddr_in addr= {0};
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(9999);
+    addr.sin_addr.s_addr = inet_addr("192.168.2.90");
 
     //3.把socket绑定在地址上
     r = bind(fd, (struct sockaddr*)&addr, sizeof(addr));
