@@ -69,12 +69,14 @@ main() {
     }
     close(fd[1]);
     int re;
+    int r;
     char buf[20] = {0};
     fddata = open("result.txt", O_RDWR | O_CREAT, 0666);
     while(1) {
         //打开文件,准备存储
-        read(fd[0], &re, sizeof(int));
-        sprintf(buf, "%d\n", re);
+        r = read(fd[0], &re, sizeof(int));
+        if(r > 0)
+            sprintf(buf, "%d\n", re);
         write(fddata, buf, strlen(buf));
     }
 }
