@@ -15,6 +15,7 @@ main() {
             ent->h_addr[1],
             ent->h_addr[2],
             ent->h_addr[3]);
+        printf("主机别名：%s\n", ent->h_aliases[0]);
     }
     endhostent();
 }
