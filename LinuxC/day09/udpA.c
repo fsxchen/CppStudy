@@ -31,13 +31,14 @@ main() {
             (struct sockaddr *)&addr_sender, &len);
         if(r > 0) {
             buf[r] = 0;
-            printf("发送者IP:%s, 数据:%s\n",
-                inet_ntoa(addr_sender.sin_addr), "SS");
+            printf("%s,%s\n", inet_ntoa(addr_sender.sin_addr),buf);
+            // printf("发送者IP:%s, 数据:%s\n",
+            //     inet_ntoa(addr_sender.sin_addr), buf);
         }
         if(r == 0){ //表示连接被关闭了
             printf("关闭！\n");
             break;
-
+        }
         if(r == -1) {
             printf("网络故障");
             break;
