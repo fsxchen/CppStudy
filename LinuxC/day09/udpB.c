@@ -19,7 +19,7 @@ main() {
 
     ad.sin_family = AF_INET;
     ad.sin_port = htons(11111);
-    ad.sin_addr.s_addr = inet_addr("192.168.2.205");
+    ad.sin_addr.s_addr = inet_addr("127.0.0.1");
 
 
     while(1) {
