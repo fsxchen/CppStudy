@@ -21,6 +21,7 @@ main() {
     ad.sin_port = htons(11111);
     ad.sin_addr.s_addr = inet_addr("127.0.0.1");
 
+    // connect(fd, (struct sockaddr *)&ad, sizeof(ad));
 
     while(1) {
         r = read(0, buf, sizeof(buf) - 1);
@@ -28,5 +29,13 @@ main() {
         buf[r] = 0;
 
         sendto(fd, buf, r, 0, (struct sockaddr *)&ad, sizeof(ad));
+
+        bzero(buf, sizeof(buf));
+        r = recv(fd, buf, sizeof(buf), 0);
+        buf[r] = 0;
+        printf("来接接受方的数据:%s\n", buf);
+        // r = send(fd, buf, r, 0);
+        if (r == -1) break;
     }
+    close(fd);
 }

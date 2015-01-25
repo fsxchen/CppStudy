@@ -32,9 +32,12 @@ main() {
             (struct sockaddr *)&addr_sender, &len);
         if(r > 0) {
             buf[r] = 0;
-            printf("%s,%s\n", (char *)(long)inet_ntoa(addr_sender.sin_addr), buf);
-            // printf("发送者IP:%s, 数据:%s\n",
-            //     inet_ntoa(addr_sender.sin_addr), buf);
+            // printf("%s,%d, %s\n", inet_ntoa(addr_sender.sin_addr), ntohs(addr_sender.sin_port), buf);
+            printf("发送者IP:%s, 端口:%d, 数据:%s\n",
+                inet_ntoa(addr_sender.sin_addr),
+                ntohs(addr_sender.sin_port), buf);
+            sendto(fd, "你好啊！", strlen("你好啊！"), 0,
+                (struct sockaddr *)&addr_sender, sizeof(addr_sender));
         }
         if(r == 0){ //表示连接被关闭了
             printf("关闭！\n");
