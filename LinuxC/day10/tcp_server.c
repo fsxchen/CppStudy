@@ -10,6 +10,7 @@ main() {
     int serfd;
     int cfd;
     int r;
+    char buf[1024];
     socklen_t len;
     struct sockaddr_in saddr, caddr;
     //1.socket
@@ -28,11 +29,25 @@ main() {
     if(r == -1) printf("3:%m\n"), exit(-1);
     printf("监听服务器成功!\n");
     //4.accept
-    while(1) {
-        len = sizeof(caddr);
-        cfd = accept(serfd, (struct sockaddr *)&caddr, &len);
-        printf("有人连接:%d, IP:%s:%u\n",
-            cfd, inet_ntoa(caddr.sin_addr), ntohs(caddr.sin_port));
-    }
 
+    cfd = accept(serfd, (struct sockaddr *)&caddr, &len);
+    printf("有人连接:%d, IP:%s:%u\n",
+        cfd, inet_ntoa(caddr.sin_addr), ntohs(caddr.sin_port));
+    while(1) {
+        r = recv(cfd, buf, 1024, 0);
+        if(r > 0) {
+            buf[r] = 0;
+            printf("::%s\n", buf);
+        }
+        // if(r == 0) {
+        //     printf("连接断开！\n");
+        //     break;
+        // }
+        // if(r == -1) {
+        //     printf("网络断开！\n");
+        //     break;
+        // }
+    }
+    close(cfd);
+    close(serfd);
 }
