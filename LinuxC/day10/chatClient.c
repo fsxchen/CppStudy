@@ -27,11 +27,12 @@ int main() {
         while(1) {
             mvwgetstr(wmsg, 1, 1, buf);
             r = send(fd, buf, strlen(buf), 0);
-            if(r == -1) printf("11111%m\n");
             wclear(wmsg);
             box(wmsg, 0, 0);
             refresh();
             wrefresh(wmsg);
+            wrefresh(winfo);
+
         }
 
     } else {
@@ -40,6 +41,8 @@ int main() {
         int line = 1;
         while(1) {
             r = recv(fd, buf, 255, 0);
+            if(r==-1) break;
+            if(r==0) break;
             buf[r] = 0;
             mvwaddstr(winfo, line, 1, buf);
             line++;
@@ -50,9 +53,13 @@ int main() {
             }
             refresh();
             wrefresh(winfo);
-            wmove(wmsg, 1, 1);
-            touchwin(wmsg);
+            wrefresh(wmsg);
+
+            // touchwin(wmsg);
+            // wmove(wmsg, 1, 1);
+
         }
+        exit(0);
     }
 
     destory();
