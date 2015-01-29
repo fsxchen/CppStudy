@@ -25,7 +25,7 @@ main() {
     //2.绑定地址
     dr.sin_family = AF_INET;
     dr.sin_port = htons(9999);
-    dr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    dr.sin_addr.s_addr = inet_addr("192.168.2.205");
     r = bind(sfd, (struct sockaddr *)&dr, sizeof(dr));
     if(r == -1) printf("bind err:%m\n"), close(sfd), exit(-1);
     printf("bind ok\n");
@@ -66,6 +66,7 @@ main() {
                 for(i = 0; i < 100; i++){
                     if(fds[i] > 0) {
                         send(fds[i], buf, r, 0);
+                        printf("I bordcast to:%d\n", fds[i]);
                     }
                 }
             }

@@ -6,6 +6,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <curses.h>
+#include <signal.h>
 
 WINDOW *winfo, *wmsg;
 int fd;
@@ -15,20 +16,27 @@ struct sockaddr_in dr;
 int initSocket();
 void initUI();
 void destory();
+void handle(int s) {
+    int status;
+    wait(&status);
+    destory();
+    exit(-1);
+}
 
 int main() {
     fd = initSocket();
     if(fd == -1) printf("socket err:%m\n"), exit(-1);
     printf("网络初始化成功！\n");
     initUI();
+    signal(SIGCHLD, handle);
     if(fork()) {    //父进程
         //输入，发送
         char buf[256];
         while(1) {
             mvwgetstr(wmsg, 1, 1, buf);
             r = send(fd, buf, strlen(buf), 0);
-            wclear(wmsg);
-            box(wmsg, 0, 0);
+            // wclear(wmsg);
+            // box(wmsg, 0, 0);
             refresh();
             wrefresh(wmsg);
             wrefresh(winfo);
@@ -51,15 +59,15 @@ int main() {
                 line = 1;
                 box(winfo, 0, 0);
             }
+
+            wmove(wmsg, 1, 1);
+            touchwin(wmsg);
+
             refresh();
             wrefresh(winfo);
             wrefresh(wmsg);
-
-            // touchwin(wmsg);
-            // wmove(wmsg, 1, 1);
-
         }
-        exit(0);
+        exit(-1);
     }
 
     destory();
@@ -87,7 +95,7 @@ int initSocket() {
     if(fd==-1) return -1;
     dr.sin_family = AF_INET;
     dr.sin_port = htons(9999);
-    dr.sin_addr.s_addr = inet_addr("127.0.0.1");
+    dr.sin_addr.s_addr = inet_addr("192.168.2.205");
     r = connect(fd, (struct sockaddr *)&dr, sizeof(dr));
     if(r == -1) {
         close(fd);
