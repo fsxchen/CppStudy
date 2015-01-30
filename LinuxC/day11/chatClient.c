@@ -95,7 +95,7 @@ int initSocket() {
     if(fd==-1) return -1;
     dr.sin_family = AF_INET;
     dr.sin_port = htons(9999);
-    dr.sin_addr.s_addr = inet_addr("192.168.2.205");
+    dr.sin_addr.s_addr = inet_addr("127.0.0.1");
     r = connect(fd, (struct sockaddr *)&dr, sizeof(dr));
     if(r == -1) {
         close(fd);
