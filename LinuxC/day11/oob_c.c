@@ -9,6 +9,7 @@ main() {
     struct sockaddr_in dr;
     char buf[100];
     int r;
+    fd_set fds;
 
     fd = socket(AF_INET, SOCK_STREAM, 0);
     if(fd == -1) printf("socket err:%m\n"), exit(-1);
@@ -24,6 +25,9 @@ main() {
     // send(fd, "Hello", 5, 0);
 
     while(1) {
+        FD_ZERO(&fds);
+        FD_SET(&fd, fds);
+        select(fd + 1, &fds, 0, 0);
         send(fd, "Hello", 5, MSG_OOB);
         sleep(1);
     }
