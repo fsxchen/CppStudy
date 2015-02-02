@@ -6,12 +6,14 @@
 #include <signal.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <string.h>
 
 
 main() {
 
     int fd, cfd;
     struct sockaddr_in dr;
+    char strres[1024];
     char buf[100];
     int r;
 
@@ -34,6 +36,15 @@ main() {
     fcntl(cfd, F_SETOWN, getpid());
     if(cfd == -1) printf("listen err:%m\n"), exit(-1);
     printf("accept ok!\n");
+    sprintf(strres,
+        "HTTP/1.1 200 OK\r\n"
+        "Server: heha2.0\r\n"
+        "Content-Type: text/html\r\n"
+        "Content-Length: 28\r\n"
+        "Connection: keep-alive\r\n"
+        "\r\n"
+        "<font color=red>Hello</font>"
+        );
     while(1) {
         r = recv(cfd, buf, 1024, 0);
         // r = recv(cfd, buf, 100, MSG_OOB);
@@ -41,6 +52,7 @@ main() {
         if (r > 0) {
             buf[r] = 0;
             printf("::%s\n", buf);
+            send(cfd, strres, strlen(strres), 0);
         }else {
             break;
         }

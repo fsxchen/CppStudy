@@ -18,13 +18,13 @@ int main() {
     if(fd == -1) printf("socket err:%m\n"), exit(-1);
     //连接服务器x.x.x.x
     dr.sin_family = AF_INET;
-    dr.sin_port = htons(8000);
-    dr.sin_addr.s_addr = inet_addr("192.168.1.2");
+    dr.sin_port = htons(80);
+    dr.sin_addr.s_addr = inet_addr("112.126.197.119");
     r = connect(fd, (struct sockaddr *)&dr, sizeof(dr));
     //构建http请求字符串
     sprintf(strreq,
-        "GET /socket5.py HTTP/1.1\r\n"
-        "Host: 192.168.12.:8000"
+        "GET / HTTP/1.1\r\n"
+        "Host: huaqingth.com\r\n"
         "User-Agent: Mozilla/5.0\r\n"
         "Accept: text/html,application/xhtml+xml,application/xml\r\n"
         "Accept-Language: zh-CN,zh\r\n"
