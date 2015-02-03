@@ -19,7 +19,8 @@ void* runodd(void *d) {
         printf("%d\n", i);
         // if(i > 100000)
         //     pthread_exit(0);     //另外一个会死锁
-        pthread_mutex_unlock(&m);
+        // pthread_mutex_unlock(&m);
+        // pthread_cleanup_pop(0);
         pthread_cleanup_pop(1);
     }
 }
@@ -31,9 +32,9 @@ void* runeven(void *d) {
         pthread_mutex_lock(&m);
         // sleep(1);
         printf("%d\n", i);
-        pthread_mutex_unlock(&m);
-        pthread_cleanup_pop(0);
-
+        // pthread_mutex_unlock(&m);
+        // pthread_cleanup_pop(0);
+        pthread_cleanup_pop(1);
     }
 }
 
