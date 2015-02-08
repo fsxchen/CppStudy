@@ -15,8 +15,7 @@ UrlTransWin::~UrlTransWin() {
 
 void UrlTransWin::decode() {
     QString Str = ui->urlTransInput->toPlainText();
-    // int l = Str.length();
-    cout << "HHHH" << endl;
+    
     ui->urlTransOutput->setText(Str);
 
 }
