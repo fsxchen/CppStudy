@@ -5,7 +5,7 @@
 #include <QPen>
 
 DemoPushButton::DemoPushButton(QWidget *parent) : QPushButton(parent), israised(true) {
-
+    setMouseTracking(true);
 }
 
 void DemoPushButton::enterEvent(QEvent *e) {
@@ -15,6 +15,23 @@ void DemoPushButton::enterEvent(QEvent *e) {
 
 void DemoPushButton::leaveEvent(QEvent *e) {
     israised = true;
+    repaint();
+}
+
+void DemoPushButton::mouseMoveEvent(QMouseEvent *e) {
+    float w = width();
+    float h = height();
+    float k = h/w;
+    int x = e->x();
+    int y = e->y();
+    if( y>= -k*x + h/2 &&
+        y>=  k*x - h/2 &&
+        y<=  k*x + h/2 &&
+        y <= -k*x +3*h/2) {
+        israised = false;
+    } else {
+        israised = true;
+    }
     repaint();
 }
 

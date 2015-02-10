@@ -1,9 +1,10 @@
 #include <QApplication>
-#include "dlgyao.h"
+#include "mydialog.h"
 int main(int args, char **argv) {
     QApplication app(args, argv);
 
-    DlgYao w;
+    MyDialog dlg;
+    dlg.setVisible(true);
 
     return app.exec();
 }

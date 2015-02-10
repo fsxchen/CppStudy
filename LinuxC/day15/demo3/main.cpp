@@ -1,9 +1,10 @@
 #include <QApplication>
-#include "dlgyao.h"
+#include "DemoWidget.h"
 int main(int args, char **argv) {
     QApplication app(args, argv);
-
-    DlgYao w;
+    DemoWidget w;
+    w.resize(400, 400);
+    w.setVisible(true);
 
     return app.exec();
 }

@@ -3,6 +3,7 @@
 #include <QPushButton>
 #include <QPaintEvent>
 #include <QEvent>
+#include <QMouseEvent>
 
 #include "DemoPushButton.h"
 
@@ -15,5 +16,6 @@ protected:
     virtual void paintEvent(QPaintEvent *e);
     virtual void enterEvent(QEvent *e);
     virtual void leaveEvent(QEvent *e);
+    virtual void mouseMoveEvent(QMouseEvent *e);
 };
 #endif

@@ -6,6 +6,7 @@
 class DemoWidget: public QWidget {
 private:
     DemoPushButton *btn;
+    DemoPushButton *btn2;
 public:
     DemoWidget(QWidget *parent=NULL);
 };
