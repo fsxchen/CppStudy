@@ -1,7 +1,11 @@
 TEMPLATE=app
 SOURCES=chatServer.cpp  \
-        ServerWindow.cpp
-HEADERS=ServerWindow.h
+        ServerWindow.cpp    \
+        chatException.cpp   \
+        ServerSocket.cpp
+HEADERS=ServerWindow.h  \
+        chatException.h \
+        ServerSocket.h
 CONFIG=release qt
 QT=core gui
 TARGET=server
