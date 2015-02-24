@@ -1,5 +1,8 @@
 #include "ServerWindow.h"
+#include "chatException.h"
 #include <QColor>
+#include <QMessageBox>
+list<ThClient *> ServerWindow::allusers;
 ServerWindow::ServerWindow(QWidget *p) {
     //初始化窗体
     this->resize(1024, 768);
@@ -46,5 +49,29 @@ ServerWindow::ServerWindow(QWidget *p) {
 
     this->setStatusBar(status);
 
+    connect(actstart, SIGNAL(triggered()), this, SLOT(onStart()));
+    connect(actexit, SIGNAL(triggered()), this, SLOT(qtExit()));
+
     this->setVisible(true);
+}
+
+void ServerWindow::onStart() {
+    // QMessageBox::information(this, tr("提示"), tr("响应"));
+    try{
+        thaccept.init();
+        thaccept.info = info;
+        info->setTextColor(QColor(0, 255, 0));
+        info->append(tr("服务器启动成功!"));
+        connect(&thaccept, SIGNAL(sigInfo(const QString &)),
+            info, SLOT(append(const QString)));
+        thaccept.start();
+        info->append(tr("服务器接受线程成功!"));
+    } catch(ChatException e) {
+        info->setTextColor(QColor(255, 0, 0));
+        info->append(tr(e.what()));
+    }
+}
+
+void ServerWindow::qtExit() {
+    QMessageBox::information(this, tr("提示"), tr("响"));
 }
