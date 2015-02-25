@@ -14,8 +14,8 @@ UrlTransWin::~UrlTransWin() {
 }
 
 void UrlTransWin::decode() {
-    QString Str = ui->urlTransInput->toPlainText();
-    
-    ui->urlTransOutput->setText(Str);
+    QString str = ui->urlTransInput->toPlainText();
+    QString strLower = str.toLower();
+    ui->urlTransOutput->setText(strLower);
 
 }
