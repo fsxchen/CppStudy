@@ -29,24 +29,24 @@ void MainWindow::paintEvent(QPaintEvent *e)
 
     QBrush brush;
     brush.setStyle(Qt::SolidPattern);
-    // for (i = 0; i < 15; i++)
-    // {
-    //     for (j = 0; j < 15; j++)
-    //     {
-    //         if (a[i][j] == 1)
-    //         {
-    //             brush.setColor(Qt::black);
-    //             p.setBrush(brush);
-    //             p.drawEllipse(QPoint((i + 1) * 40, (j + 1) * 40), 15, 15);
-    //         }
-    //         else if (a[i][j] == 2)
-    //         {
-    //             brush.setColor(Qt::white);
-    //             p.setBrush(brush);
-    //             p.drawEllipse(QPoint((i + 1) * 40, (j + 1) * 40), 15, 15);
-    //         }
-    //     }
-    // }
+    for (i = 0; i < 15; i++)
+    {
+        for (j = 0; j < 15; j++)
+        {
+            if (a[i][j] == 1)
+            {
+                brush.setColor(Qt::black);
+                p.setBrush(brush);
+                p.drawEllipse(QPoint((i + 1) * 40, (j + 1) * 40), 15, 15);
+            }
+            else if (a[i][j] == 2)
+            {
+                brush.setColor(Qt::white);
+                p.setBrush(brush);
+                p.drawEllipse(QPoint((i + 1) * 40, (j + 1) * 40), 15, 15);
+            }
+        }
+    }
 }
 
 void MainWindow::mouseReleaseEvent(QMouseEvent *e)
